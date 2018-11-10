@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App1"
+             x:Class="App1.MainPage">
+    <ContentPage.Resources>
+        <Style x:Key="HeaderLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="TextColor" Value="#3e3e3e"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="CornerRadius" Value="20"/>
+        </Style>
+
+        <Style x:Key="SeperatorStyle" TargetType="BoxView">
+            <Setter Property="HeightRequest" Value="1"/>
+            <Setter Property="BackgroundColor" Value="#55797979"/>
+            <Setter Property="Margin" Value="-20,0"/>
+        </Style>
+
+        <Style x:Key="MessageBoxStyle" TargetType="BoxView">
+            <Setter Property="ScaleX" Value="1.15"/>
+            <Setter Property="BackgroundColor" Value="#bfb6a7"/>
+            <Setter Property="CornerRadius" Value="0,20,20,20"/>
+            <Setter Property="HorizontalOptions" Value="End"/>
+        </Style>
+
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout Padding="20,0,20,5" Spacing="0">
+            <Image Source="header.png" HorizontalOptions="StartAndExpand" Margin="-20,0"/>
+            <Label Text="Nice Adidass Sneakers" Style="{StaticResource HeaderLabelStyle}" Margin="0,10,0,0"/>
+            <Label Text="This shoe is cool and it is almost not used. I want to swop it because Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," 
+               LineBreakMode="CharacterWrap"
+               Margin="0,0,0,10"
+               TextColor="#797979" />
+            <BoxView Style="{StaticResource SeperatorStyle}"/>
+            <Label Style="{StaticResource HeaderLabelStyle}" Margin="0,10">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Size: "/>
+                        <Span Text="43"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label Text="About the seller" Margin="0,10,0,0" VerticalOptions="End" Style="{StaticResource HeaderLabelStyle}"/>
+
+            <Grid HeightRequest="75" Margin="0,0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Grid.RowSpan="2" Source="profile.png" Aspect="AspectFit" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Label Grid.Column="1" Grid.Row="0" FontAttributes="Bold" Text="Jacob H." VerticalOptions="End"/>
+                <Label Grid.Column="1" Grid.Row="1" VerticalOptions="Start" Text="41 Years Old"/>
+                <BoxView Grid.Column="2" Grid.Row="1" 
+                         Margin="0,10,0,0"
+                         CornerRadius="50" 
+                         WidthRequest="5"
+                         HeightRequest="5" 
+                         VerticalOptions="Start" 
+                         HorizontalOptions="Center" 
+                         BackgroundColor="#5d94bd"/>
+                <Label Grid.Column="3" Grid.Row="1" VerticalOptions="Start" Text="2300 Copenhagen"/>
+            </Grid>
+            <Grid HeightRequest="40" Margin="0,10,0,20">
+                <Button Grid.Column="0" Style="{StaticResource ButtonStyle}" Margin="10,0" BackgroundColor="#5d94bd" Text="More from seller"/>
+                <Button Grid.Column="1" Style="{StaticResource ButtonStyle}" Margin="10,0" BackgroundColor="#d56c6c" Text="Report"/>
+            </Grid>
+
+            <BoxView Style="{StaticResource SeperatorStyle}"/>
+
+            <!--This should be replaced with ListView that includes template selector, depending on the message owner-->
+            <Grid HorizontalOptions="EndAndExpand" Margin="10,20,10,10" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <BoxView Style="{StaticResource MessageBoxStyle}" WidthRequest="{Binding Source={x:Reference lbl1}, Path=Width}" />
+                <Label x:Name="lbl1" 
+                       Text="I Like Blue. Shall we be ShoeMates?" 
+                       FontAttributes="Italic"
+                       HorizontalOptions="End"  
+                       VerticalOptions="Center" 
+                       TextColor="White"/>
+                <Label Grid.Row="1" 
+                       Text="27.09.2018 / 11:43 am" 
+                       FontSize="11" 
+                       TextColor="Gray" 
+                       HorizontalOptions="End" 
+                       VerticalOptions="Start"/>
+
+                <Label x:Name="lbl2" 
+                       Grid.Row="2"
+                       Text="Good Idea :) My number is +4542145" 
+                       Margin="5,10,5,0"
+                       FontAttributes="Italic"
+                       HorizontalOptions="Start"  
+                       LineBreakMode="CharacterWrap" 
+                       VerticalOptions="End" 
+                       TextColor="Gray"/>
+                <Label Grid.Row="3" 
+                       WidthRequest="{Binding Source={x:Reference lbl2}, Path=Width}" 
+                       HorizontalTextAlignment="End" 
+                       Text="27.09.2018 / 11:43 am" 
+                       TextColor="Gray" 
+                       FontSize="11"
+                       Margin="0,5"
+                       TranslationX="10"
+                       HorizontalOptions="Start" 
+                       VerticalOptions="Start"/>
+            </Grid>
+
+            <Grid Margin="-10,0,-15,0">
+                <Image Source="smile.png" HorizontalOptions="Start" WidthRequest="25" Aspect="AspectFit"/>
+                <Entry Margin="30,0,100,0" PlaceholderColor="#88797979" Placeholder="Write message"/>
+                <Button Style="{StaticResource ButtonStyle}" 
+                        BackgroundColor="#5d94bd" 
+                        HorizontalOptions="End" 
+                        WidthRequest="90"
+                        Margin="10,0,0,0"
+                        TextColor="White" 
+                        Text="SEND" 
+                        CornerRadius="15"
+                        HeightRequest="30" 
+                        FontSize="12" FontAttributes="Bold"
+                        VerticalOptions="Center"/>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
